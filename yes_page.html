@@ -20,9 +20,30 @@
             <p class="closing">Love,<br><span class="signature">RAHUL ❤️</span></p>
         </article>
 
+        <audio id="bgAudio" loop class="audio-player" aria-label="Romantic music">
+            <source src="audio-editor-output.mp3" type="audio/mpeg">
+        </audio>
+
         <div class="gif_container" aria-hidden="true">
             <img src="R.A.jpeg" alt="R.A. Image">
         </div>
     </main>
-</body>
-</html>
+
+    <script>
+        // Handle background audio autoplay
+        window.addEventListener('load', function() {
+            const audio = document.getElementById('bgAudio');
+            if (audio) {
+                const playPromise = audio.play();
+                if (playPromise !== undefined) {
+                    playPromise.catch(error => {
+                        console.log('Autoplay prevented. Attempting on user interaction...');
+                        document.addEventListener('click', function playOnClick() {
+                            audio.play();
+                            document.removeEventListener('click', playOnClick);
+                        }, { once: true });
+                    });
+                }
+            }
+        });
+    </script>

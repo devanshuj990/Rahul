@@ -21,6 +21,11 @@ body{
 
 @media (max-width:520px){.header_text{font-size:1.8rem}.gif_container img{width:90%}}
 
+/* Background Audio Player */
+.audio-player{
+  display:none;
+}
+
 /* Letter styles */
 .letter{
     text-align:left;
